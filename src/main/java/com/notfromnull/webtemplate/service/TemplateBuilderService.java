@@ -4,17 +4,24 @@
  */
 package com.notfromnull.webtemplate.service;
 
+import com.notfromnull.webtemplate.entity.Banner;
+import com.notfromnull.webtemplate.entity.Footer;
+import com.notfromnull.webtemplate.entity.Navbar;
+import com.notfromnull.webtemplate.repository.BannerRepository;
+import com.notfromnull.webtemplate.repository.FooterRepository;
+import com.notfromnull.webtemplate.repository.NavbarRepository;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
@@ -25,29 +32,44 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 @Service
 public class TemplateBuilderService {
 
+    @Autowired
+    private BannerRepository bannerRepository;
+
+    @Autowired
+    private FooterRepository footerRepository;
+
+    @Autowired
+    private NavbarRepository navbarRepository;
+
     private List<String> fileList = new ArrayList<String>();
-    private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\template";
+    private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
     private static final String OUTPUT = "NotFromZero_TemplateProject.zip";
 
-    public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response) {
+    public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response, String navbarId, String bannerId, String footerId) {
         generateFileList(new File(SOURCE_FOLDER));
+        generateProject(navbarId, bannerId, footerId);
         return zipIt(OUTPUT, response);
     }
 
     public StreamingResponseBody zipIt(String zipFile, HttpServletResponse response) {
-        System.out.println(fileList);
         int BUFFER_SIZE = 1024;
 
         StreamingResponseBody streamResponseBody = out -> {
-
             final ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
             ZipEntry zipEntry = null;
             InputStream inputStream = null;
 
             try {
                 for (String path : fileList) {
+                    System.out.println("------------------------");
+                    System.out.println(path);
                     File file = new File(SOURCE_FOLDER + File.separator + path);
-                    zipEntry = new ZipEntry(path + File.separator + file.getName());
+
+                    if (path.contains(".html")) {
+                        zipEntry = new ZipEntry(file.getName());
+                    } else {
+                        zipEntry = new ZipEntry(path + File.separator + file.getName());
+                    }
 
                     inputStream = new FileInputStream(file);
 
@@ -74,44 +96,6 @@ public class TemplateBuilderService {
 
         };
         return streamResponseBody;
-//        byte[] buffer = new byte[1024];
-//        String source = new File(SOURCE_FOLDER).getName();
-//        FileOutputStream fos = null;
-//        ZipOutputStream zos = null;
-//        try {
-//            fos = new FileOutputStream(zipFile);
-//            zos = new ZipOutputStream(fos);
-//
-//            System.out.println("Output to Zip : " + zipFile);
-//            FileInputStream in = null;
-//
-//            for (String file : fileListAlt) {
-//                System.out.println("File Added : " + file);
-//                ZipEntry ze = new ZipEntry(source + File.separator + file);
-//                zos.putNextEntry(ze);
-//                try {
-//                    in = new FileInputStream(SOURCE_FOLDER + File.separator + file);
-//                    int len;
-//                    while ((len = in.read(buffer)) > 0) {
-//                        zos.write(buffer, 0, len);
-//                    }
-//                } finally {
-//                    in.close();
-//                }
-//            }
-//
-//            zos.closeEntry();
-//            System.out.println("Folder successfully compressed");
-//
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        } finally {
-//            try {
-//                zos.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
     }
 
     public void generateFileList(File node) {
@@ -130,5 +114,87 @@ public class TemplateBuilderService {
 
     private String generateZipEntry(String file) {
         return file.substring(SOURCE_FOLDER.length() + 1, file.length());
+    }
+
+    private void generateProject(String navbarId, String bannerId, String footerId) {
+        Banner banner = null;
+        Navbar navbar = null;
+        Footer footer = null;
+        try {
+// ----------- Html
+            File fileHtml = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "index.html");
+            BufferedWriter bwHtml = new BufferedWriter(new FileWriter(fileHtml, false));
+            bwHtml.write("<!doctype html>\n"
+                    + "<html lang=\"en\">\n"
+                    + "  <head>\n"
+                    + "    <!-- Required meta tags -->\n"
+                    + "    <meta charset=\"utf-8\">\n"
+                    + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n"
+                    + "\n"
+                    + "    <!-- Bootstrap CSS -->\n"
+                    + "    <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">\n"
+                    + "    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.6.3/css/all.css\" integrity=\"sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/\" crossorigin=\"anonymous\">\n"
+                    + "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\" />\n"
+                    + "    <link rel=\"stylesheet\" href=\"./css/not-from-zero.css\" type=\"text/css\">\n"
+                    + "\n"
+                    + "    <title>Starter Project!</title>\n"
+                    + "  </head>\n"
+                    + "  <body>");
+            bwHtml.newLine();
+
+            if (navbarId != null) {
+                navbar = navbarRepository.findById(navbarId).orElseThrow();
+                bwHtml.write(navbar.getHtml());
+                bwHtml.newLine();
+            }
+
+            if (bannerId != null) {
+                banner = bannerRepository.findById(bannerId).orElseThrow();
+                bwHtml.write(banner.getHtml());
+                bwHtml.newLine();
+            }
+
+            if (footerId != null) {
+                footer = footerRepository.findById(footerId).orElseThrow();
+                bwHtml.write(footer.getHtml());
+                bwHtml.newLine();
+            }
+
+            bwHtml.write("<script src=\"./script/not-from-zero.js\" ></script>\n"
+                    + "  </body>\n"
+                    + "</html>");
+            bwHtml.close();
+// ------------ end Html
+
+// ------------ Css
+            File fileCSS = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "css" + File.separator + "not-from-zero.css");
+            BufferedWriter bwCSS = new BufferedWriter(new FileWriter(fileCSS, false));
+
+            if (navbar != null) {
+                bwCSS.write(navbar.getCss());
+                bwCSS.newLine();
+            }
+
+            if (banner != null) {
+                bwCSS.write(banner.getCss());
+                bwCSS.newLine();
+            }
+
+            if (footer != null) {
+                bwCSS.write(footer.getCss());
+                bwCSS.newLine();
+            }
+
+            bwCSS.close();
+
+            // Js
+//            File fileJs = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "script" + File.separator + "not-from-zero.js");
+//            BufferedWriter bwJs = new BufferedWriter(new FileWriter(fileJs));
+//            bwJs.write();
+//            bwJs.close();
+        } catch (IOException err) {
+            System.out.print("---------------------------------------------> ");
+            System.out.print(err.getMessage());
+        }
     }
 }
