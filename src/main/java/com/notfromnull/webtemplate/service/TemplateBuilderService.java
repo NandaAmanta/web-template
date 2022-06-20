@@ -188,12 +188,29 @@ public class TemplateBuilderService {
             }
 
             bwCSS.close();
+// ------------ end Css
 
-            // Js
-//            File fileJs = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "script" + File.separator + "not-from-zero.js");
-//            BufferedWriter bwJs = new BufferedWriter(new FileWriter(fileJs));
-//            bwJs.write();
-//            bwJs.close();
+// ------------ Js
+            File fileJs = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "script" + File.separator + "not-from-zero.js");
+            BufferedWriter bwJs = new BufferedWriter(new FileWriter(fileJs, false));
+            if (navbar != null) {
+                bwJs.write(navbar.getJs());
+                bwJs.newLine();
+            }
+
+            if (banner != null) {
+                bwJs.write(banner.getJs());
+                bwJs.newLine();
+            }
+
+            if (footer != null) {
+                bwJs.write(footer.getJs());
+                bwJs.newLine();
+            }
+
+            bwJs.close();
+// ------------ end Js
+
         } catch (IOException err) {
             System.out.print("---------------------------------------------> ");
             System.out.print(err.getMessage());
