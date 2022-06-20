@@ -43,15 +43,13 @@ public class TemplateBuilderService {
 
     private List<String> fileList = new ArrayList<String>();
     private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
-    private static final String OUTPUT = "NotFromZero_TemplateProject.zip";
-
     public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response, String navbarId, String bannerId, String footerId) {
         generateFileList(new File(SOURCE_FOLDER));
         generateProject(navbarId, bannerId, footerId);
-        return zipIt(OUTPUT, response);
+        return zipIt(response);
     }
 
-    public StreamingResponseBody zipIt(String zipFile, HttpServletResponse response) {
+    public StreamingResponseBody zipIt(HttpServletResponse response) {
         int BUFFER_SIZE = 1024;
 
         StreamingResponseBody streamResponseBody = out -> {
@@ -63,18 +61,9 @@ public class TemplateBuilderService {
 
             try {
                 for (String path : fileListAlt) {
-                    System.out.println("------------------------");
-                    System.out.println(path);
                     File file = new File(SOURCE_FOLDER + File.separator + path);
-
-                    if (path.contains(".html")) {
-                        zipEntry = new ZipEntry(file.getName());
-                    } else {
-                        zipEntry = new ZipEntry(path + File.separator + file.getName());
-                    }
-
+                    zipEntry = new ZipEntry(path);
                     inputStream = new FileInputStream(file);
-
                     zipOutputStream.putNextEntry(zipEntry);
                     byte[] bytes = new byte[BUFFER_SIZE];
                     int length;
@@ -172,17 +161,17 @@ public class TemplateBuilderService {
             File fileCSS = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "css" + File.separator + "not-from-zero.css");
             BufferedWriter bwCSS = new BufferedWriter(new FileWriter(fileCSS, false));
 
-            if (navbar != null) {
+            if (navbar != null && navbar.getCss() != null) {
                 bwCSS.write(navbar.getCss());
                 bwCSS.newLine();
             }
 
-            if (banner != null) {
+            if (banner != null && banner.getCss() != null) {
                 bwCSS.write(banner.getCss());
                 bwCSS.newLine();
             }
 
-            if (footer != null) {
+            if (footer != null && footer.getCss() != null) {
                 bwCSS.write(footer.getCss());
                 bwCSS.newLine();
             }
@@ -193,17 +182,17 @@ public class TemplateBuilderService {
 // ------------ Js
             File fileJs = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "script" + File.separator + "not-from-zero.js");
             BufferedWriter bwJs = new BufferedWriter(new FileWriter(fileJs, false));
-            if (navbar != null) {
+            if (navbar != null && navbar.getJs() != null) {
                 bwJs.write(navbar.getJs());
                 bwJs.newLine();
             }
 
-            if (banner != null) {
+            if (banner != null && banner.getJs() != null) {
                 bwJs.write(banner.getJs());
                 bwJs.newLine();
             }
 
-            if (footer != null) {
+            if (footer != null && footer.getJs() != null) {
                 bwJs.write(footer.getJs());
                 bwJs.newLine();
             }
