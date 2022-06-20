@@ -55,12 +55,14 @@ public class TemplateBuilderService {
         int BUFFER_SIZE = 1024;
 
         StreamingResponseBody streamResponseBody = out -> {
+            List<String> fileListAlt = new ArrayList<>(fileList);
+            fileList = new ArrayList<>();
             final ZipOutputStream zipOutputStream = new ZipOutputStream(response.getOutputStream());
             ZipEntry zipEntry = null;
             InputStream inputStream = null;
 
             try {
-                for (String path : fileList) {
+                for (String path : fileListAlt) {
                     System.out.println("------------------------");
                     System.out.println(path);
                     File file = new File(SOURCE_FOLDER + File.separator + path);
