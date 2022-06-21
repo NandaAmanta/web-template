@@ -4,13 +4,18 @@
  */
 package com.notfromnull.webtemplate.controllers;
 
+import com.notfromnull.webtemplate.entity.Banner;
+import com.notfromnull.webtemplate.entity.Footer;
+import com.notfromnull.webtemplate.entity.Navbar;
 import com.notfromnull.webtemplate.service.BannerService;
 import com.notfromnull.webtemplate.service.FooterService;
 import com.notfromnull.webtemplate.service.NavbarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -60,7 +65,20 @@ public class ViewController {
     }
 
     @GetMapping("/preview")
-    public String getPreviewPage(Model model) {
+    public String getPreviewPage(
+            Model model,
+            @RequestParam @Nullable String navbarId,
+            @RequestParam @Nullable String bannerId,
+            @RequestParam @Nullable String footerId) {
+
+        Banner banner = bannerService.getDetailBanner(bannerId);
+        Navbar navbar = navbarService.getDetailNavbar(navbarId);
+        Footer footer = footerService.getDetailFooter(footerId);
+
+        model.addAttribute("banner", banner);
+        model.addAttribute("navbar", navbar);
+        model.addAttribute("footer", footer);
+
         return "preview";
     }
 }
