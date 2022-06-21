@@ -14,9 +14,12 @@ import lombok.Data;
  */
 @Data
 public class WebTemplate {
+
     private String html;
     private String css;
     private List<String> images;
     private String js;
+    private String previewImage;
     private Date createdAt;
+    
 }
