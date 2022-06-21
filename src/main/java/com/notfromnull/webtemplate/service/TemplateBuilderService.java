@@ -43,6 +43,7 @@ public class TemplateBuilderService {
 
     private List<String> fileList = new ArrayList<String>();
     private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
+
     public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response, String navbarId, String bannerId, String footerId) {
         generateFileList(new File(SOURCE_FOLDER));
         generateProject(navbarId, bannerId, footerId);
@@ -134,19 +135,20 @@ public class TemplateBuilderService {
             bwHtml.newLine();
 
             if (navbarId != null) {
-                navbar = navbarRepository.findById(navbarId).orElseThrow();
+                navbar = navbarRepository.findByTemplateId(navbarId).orElseThrow();
                 bwHtml.write(navbar.getHtml());
                 bwHtml.newLine();
             }
 
             if (bannerId != null) {
-                banner = bannerRepository.findById(bannerId).orElseThrow();
+                banner = bannerRepository.findByTemplateId(bannerId).orElseThrow();
+                System.out.println(banner.getTemplateId());
                 bwHtml.write(banner.getHtml());
                 bwHtml.newLine();
             }
 
             if (footerId != null) {
-                footer = footerRepository.findById(footerId).orElseThrow();
+                footer = footerRepository.findByTemplateId(footerId).orElseThrow();
                 bwHtml.write(footer.getHtml());
                 bwHtml.newLine();
             }

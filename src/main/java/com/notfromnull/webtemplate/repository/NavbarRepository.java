@@ -5,6 +5,7 @@
 package com.notfromnull.webtemplate.repository;
 
 import com.notfromnull.webtemplate.entity.Navbar;
+import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NavbarRepository extends MongoRepository<Navbar, String> {
 
+    Optional<Navbar> findByTemplateId(String templateId);
 }

@@ -7,7 +7,6 @@ package com.notfromnull.webtemplate.entity;
 import java.util.Date;
 import java.util.List;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 /**
  *
@@ -15,8 +14,7 @@ import org.springframework.data.annotation.Id;
  */
 @Data
 public class WebTemplate {
-    
-    @Id
+
     private String templateId;
     private String html;
     private String css;
@@ -24,5 +22,5 @@ public class WebTemplate {
     private String js;
     private String previewImage;
     private Date createdAt;
-    
+
 }
