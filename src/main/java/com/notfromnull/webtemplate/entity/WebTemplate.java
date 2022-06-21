@@ -13,8 +13,7 @@ import lombok.Data;
  * @author ASUS
  */
 @Data
-public class WebTemplate {
-
+public abstract class WebTemplate {
     private String templateId;
     private String html;
     private String css;
