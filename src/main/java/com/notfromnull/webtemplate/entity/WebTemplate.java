@@ -4,6 +4,7 @@
  */
 package com.notfromnull.webtemplate.entity;
 
+import java.util.Date;
 import java.util.List;
 import lombok.Data;
 
@@ -17,4 +18,5 @@ public class WebTemplate {
     private String css;
     private List<String> images;
     private String js;
+    private Date createdAt;
 }
