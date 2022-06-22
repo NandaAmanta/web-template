@@ -21,5 +21,4 @@ public abstract class WebTemplate {
     private String js;
     private String previewImage;
     private Date createdAt;
-
 }
