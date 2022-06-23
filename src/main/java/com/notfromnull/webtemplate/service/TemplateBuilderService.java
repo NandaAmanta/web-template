@@ -71,7 +71,6 @@ public class TemplateBuilderService {
                     while ((length = inputStream.read(bytes)) >= 0) {
                         zipOutputStream.write(bytes, 0, length);
                     }
-
                 }
                 // set zip size in response
                 response.setContentLength((int) (zipEntry != null ? zipEntry.getSize() : 0));

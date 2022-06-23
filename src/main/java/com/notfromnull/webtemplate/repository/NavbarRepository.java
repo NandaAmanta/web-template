@@ -15,6 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface NavbarRepository extends MongoRepository<Navbar, String> {
-
     Optional<Navbar> findByTemplateId(String templateId);
 }
