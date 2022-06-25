@@ -13,6 +13,7 @@ import lombok.Data;
 @Data
 public class MetaDataResponse {
     private int currentPage;
+    private int countPerPage;
     private int totalPage;
     private int totalCount;
 }
