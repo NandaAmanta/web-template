@@ -14,5 +14,6 @@ import lombok.Data;
 public class Response {
     private boolean ok;
     private String statusCode;
-    private String message;;
+    private String message;
+    private MetaDataResponse metaData;
 }

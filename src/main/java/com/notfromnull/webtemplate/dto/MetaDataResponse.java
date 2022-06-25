@@ -4,7 +4,6 @@
  */
 package com.notfromnull.webtemplate.dto;
 
-import java.util.List;
 import lombok.Data;
 
 /**
@@ -12,6 +11,8 @@ import lombok.Data;
  * @author ASUS
  */
 @Data
-public class ResponseListData<T> extends Response{
-    private List<T> data;
+public class MetaDataResponse {
+    private int currentPage;
+    private int totalPage;
+    private int totalCount;
 }
