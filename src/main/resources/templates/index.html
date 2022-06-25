@@ -50,6 +50,37 @@
                 padding-top: 200px;
             }
 
+            .card{
+                max-height: 250px !important;
+                min-height: 250px !important;
+                overflow-y: scroll;
+            }
+            
+            .break-section{
+                height: 250px;
+                background-color: #191919;
+
+            }
+
+
+.card::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #367588;
+}
+.card::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.card::-webkit-scrollbar-thumb
+{
+	background-color: #000000;
+	border: 2px solid #555555;
+}
+
+
         </style>
         <script
             src="https://kit.fontawesome.com/4f83f0713b.js"
@@ -89,25 +120,19 @@
                     </ul>
                     <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
                         <li class="nav-item"> 
-                            <a class="nav-link" href="#">
-                                <i class="fab fa-twitter"></i>
-                                <span class="d-lg-none ml-3">Twitter</span>
+                            <a class="nav-link" href="https://github.com/NandaAmanta" target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span class="d-lg-none ml-3">Gihub</span>
                             </a>
                         </li>
-                        <li class="nav-item"> 
-                            <a class="nav-link" href="#">
-                                <i class="fab fa-facebook"></i>
-                                <span class="d-lg-none ml-3">Facebook</span>
-                            </a> 
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="https://instagram.com/nanda_amanta" target="_blank">
                                 <i class="fab fa-instagram"></i>
                                 <span class="d-lg-none ml-3">Instagram</span>
                             </a> 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="https://www.linkedin.com/in/i-putu-nanda-amanta-0ba4001b7/" target="_blank">
                                 <i class="fab fa-linkedin"></i>
                                 <span class="d-lg-none ml-3">Linkedin</span>
                             </a>
@@ -133,22 +158,36 @@
         </section>
 
         <section class="benefit bg-dark-nfz">
-            <div class="container text-white" data-aos="fade-up" data-aos-duration="1500">
-                <h2 class="mb-5">What NFZero can do for you</h2>
+            <div class="container text-white">
+                <h2 class="mb-5" style="font-weight: 300;"data-aos="fade-up" data-aos-duration="1500">What NFZero can give to you</h2>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <div class="card border-white text-white bg-dark-nfz">
-
-                            <div class="card-body">
+                    <div class="col-12 col-sm-6 col-lg-4 mt-4">
+                        <div class="card border-secondary text-white bg-dark-nfz" data-aos="fade-up" data-aos-duration="1500">
+                            <div class="card-body" >
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-12 position-relative">
-                                        <i class="fas fa-clock" style="font-size: 60px; position: absolute;left: 50%; transform: translateX(-50%);"></i>
-
+                                    <div class="col-lg-3 col-md-12 text-center pb-sm-5 pt-sm-2">
+                                        <i class="fas fa-clock" style="font-size: 60px; position: relative; display: inline-block;"></i>
                                     </div>
                                     <div class="col-lg-9 col-md-12">
                                         <h4 class="card-title">Time Efficiency</h4>
-                                        <h6 class="card-subtitle mb-2">Brandenburg, Germany</h6>
-                                        <p class="card-text">Berlin is a world city of culture, politics, media and science. Its economy is based on high-tech firms and the service sector.</p>
+                                        <h6 class="card-subtitle mb-2 text-info">There is no deadline stress anymore</h6>
+                                        <p>NFZero will make your worry about "what will you do for the start" disapear. So, you will have more time to focus and finish the project NOT FROM ZERO.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mt-4">
+                        <div class="card border-secondary text-white bg-dark-nfz" data-aos="fade-up" data-aos-duration="1500" >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12 text-center pb-sm-5 pt-sm-2">
+                                        <i class="fas fa-bed" style="font-size: 60px; position: relative; display: inline-block;"></i>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <h4 class="card-title">More Free Time</h4>
+                                        <h6 class="card-subtitle mb-2 text-info">Your project will be faster to finish</h6>
+                                        <p>With this Template Project Starterm your project will be faster to finish and it will make you have more free time to hangout with your family or just sleeping.</p>
                                     </div>
 
                                 </div>
@@ -156,21 +195,70 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <div class="card border-white text-white bg-dark-nfz">
+                    
+                    <div class="col-12 col-sm-6 col-lg-4 mt-4">
+                        <div class="card border-secondary text-white bg-dark-nfz" data-aos="fade-up" data-aos-duration="1500" >
                             <div class="card-body">
-                                <h4 class="card-title">List of template</h4>
-                                <h6 class="card-subtitle mb-2">Brandenburg, Germany</h6>
-                                <p class="card-text">Berlin is a world city of culture, politics, media and science. Its economy is based on high-tech firms and the service sector.</p>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12 text-center pb-sm-5 pt-sm-2">
+                                        <i class="fa-solid fa-code" style="font-size: 60px; position: relative; display: inline-block;"></i>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <h4 class="card-title">Readable Code</h4>
+                                        <h6 class="card-subtitle mb-2 text-info">Brandenburg, Germany</h6>
+                                        <p>Of course the code that we will to give you is readable code. But if you still confuse about the code, feel free to ask.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-lg-4">
-                        <div class="card border-white text-white bg-dark-nfz">
+                    <div class="col-12 col-sm-6 col-lg-4 mt-4">
+                        <div class="card border-secondary text-white bg-dark-nfz" data-aos="fade-up" data-aos-duration="1500">
                             <div class="card-body">
-                                <h4 class="card-title">Less Effort</h4>
-                                <h6 class="card-subtitle mb-2">Brandenburg, Germany</h6>
-                                <p class="card-text">Berlin is a world city of culture, politics, media and science. Its economy is based on high-tech firms and the service sector.</p>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12 text-center pb-sm-5 pt-sm-2">
+                                        <i class="fas fa-laptop-house" style="font-size: 60px; position: relative; display: inline-block;"></i>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <h4 class="card-title">Flexible Template</h4>
+                                        <h6 class="card-subtitle mb-2 text-info">Choose whatever you want</h6>
+                                        <p>You can choose and combine any part of any template from us. </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mt-4">
+                        <div class="card border-secondary text-white bg-dark-nfz" data-aos="fade-up" data-aos-duration="1500" >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12 text-center pb-sm-5 pt-sm-2">
+                                        <i class="fas fa-hand-holding-usd" style="font-size: 60px; position: relative; display: inline-block;"></i>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <h4 class="card-title">No Cost</h4>
+                                        <h6 class="card-subtitle mb-2 text-info">In other word, It's Free</h6>
+                                        <p>No Fee, No subscription. IT IS FREE. But if you really want to help NFZero or make me smile.
+                                            you can donate for support NFZero, because the server,domain and etc is not free :)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-4 mt-4">
+                        <div class="card border-secondary text-white bg-dark-nfz" data-aos="fade-up" data-aos-duration="1500" >
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-12 text-center pb-sm-5 pt-sm-2">
+                                        <i class="fas fa-laugh-wink" style="font-size: 60px; position: relative; display: inline-block;"></i>
+                                    </div>
+                                    <div class="col-lg-9 col-md-12">
+                                        <h4 class="card-title">Happiness</h4>
+                                        <h6 class="card-subtitle mb-2 text-info">All benefit will make you be Happy</h6>
+                                        <p>With All benefit that NFZero give to you, you have to be happy. There is no excuse. BE HAPPY BRO</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -178,12 +266,58 @@
             </div>
         </section>
 
+        <div class="break-section"></div>
+        
+        <section class="bg-dark-nfz">
+            <div class="container" style="z-index: 5; position: relative;" data-aos="fade-up" data-aos-duration="1500">
+                <div class="row justify-content-center text-center">
+                  <div class="col-lg-8">
+                    <div class="mb-5">
+                        <h2 class="text-white" style="font-weight: 500;">What NFZero has done</h2>
+                        <h5 class="text-white"style="font-weight: 100;">NFZero has helped some people with NFZero's template builder.</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="row align-items-center text-center">
+                  <div class="col-12 col-sm-12 col-lg-4 mt-0 mt-sm-0">
+                    <div>
+                      <div class="d-flex align-items-center justify-content-center"> <i class="fas fa-align-center display-4 text-info me-2"></i>
+                        <span class="count-number display-4 text-white" data-to="175" data-speed="2000">27</span>
+                        <span class="display-4 text-white">+</span>
+                      </div>
+                      <h6 class="text-white mb-0 mt-3">Template Builded</h6>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-lg-4 mt-4 mt-lg-0">
+                    <div>
+                      <div class="d-flex align-items-center justify-content-center"> <i class="fas fa-smile-beam display-4 text-info me-2"></i>
+                        <span class="count-number display-4 text-white" data-to="353" data-speed="2000">15</span>
+                        <span class="display-4 text-white">+</span>
+                      </div>
+                      <h6 class="text-white mb-0 mt-3">People Love NFZero</h6>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-lg-4 mt-4 mt-lg-0">
+                    <div>
+                      <div class="d-flex align-items-center justify-content-center"> <i class="fas fa-user display-4 text-info me-2"></i>
+                        <span class="count-number display-4 text-white" data-to="522" data-speed="2000">20</span>
+                        <span class="display-4 text-white">+</span>
+                      </div>
+                      <h6 class="text-white mb-0 mt-3">Happy Users</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+        <div class="break-section"></div>
+
         <footer class="bg-dark-nfz text-white">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4">
                         <h5>NFZero</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit quis sequi quia ut, maiores harum inventore s</p>
+                        <p>NFZero is a personal project by I Putu Nanda Amanta that will help you to finish your project faster.</p>
                     </div>
 
                     <div class="col-lg-2 col-md-4">
