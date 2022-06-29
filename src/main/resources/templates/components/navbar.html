@@ -3,55 +3,62 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">NFZero</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About me</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Template Website (HTML, CSS, JS)</a></li>
-                        <li><a class="dropdown-item" href="#">Still on development...</a></li>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head></head>
+    <body th:fragment="navbar">
+
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">NFZero</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link main-navbar-item" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link main-navbar-item" href="#">About me</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle main-navbar-item" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Template Website (HTML, CSS, JS)</a></li>
+                                <li><a class="dropdown-item" href="#">Still on development...</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link main-navbar-item" href="#" tabindex="-1" aria-disabled="true">Donation</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Donation</a>
-                </li>
-            </ul>
-            </ul>
-            <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
-                <li class="nav-item"> 
-                    <a class="nav-link" href="https://github.com/NandaAmanta" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span class="d-lg-none ml-3">Gihub</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://instagram.com/nanda_amanta" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                        <span class="d-lg-none ml-3">Instagram</span>
-                    </a> 
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.linkedin.com/in/i-putu-nanda-amanta-0ba4001b7/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        <span class="d-lg-none ml-3">Linkedin</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div id="scroll-progress"></div>
-</nav>
+                    <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
+                        <li class="nav-item"> 
+                            <a class="nav-link" href="https://github.com/NandaAmanta" target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span class="d-lg-none ml-3">Gihub</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://instagram.com/nanda_amanta" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                                <span class="d-lg-none ml-3">Instagram</span>
+                            </a> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.linkedin.com/in/i-putu-nanda-amanta-0ba4001b7/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                                <span class="d-lg-none ml-3">Linkedin</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="scroll-progress"></div>
+        </nav>
+
+    </body>
+</html>
+

@@ -8,4 +8,75 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 
+#scroll-progress {
+    position: absolute;
+    top: 0;
+    width: 0%;
+    height: 4px;
+    background: #367588;
+    z-index: 10000;
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.text-decoration-none {
+    text-decoration: none !important;
+}
+/* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+.icon-width {
+    width: 2rem;
+}
+.bg-dark-gradient{
+    background-image: url("../image/2119467.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    position: relative;
+}
+.bg-dark-gradient > div{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bg-dark-nfz {
+    background-color: #191919;
+}
+footer{
+    padding-top: 200px;
+}
+
+.card{
+    max-height: 250px !important;
+    min-height: 250px !important;
+    overflow-y: scroll;
+}
+
+.break-section{
+    height: 250px;
+    background-color: #191919;
+
+}
+
+
+.card::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #367588;
+}
+.card::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+
+.card::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+    border: 2px solid #555555;
+}
+
+
+
+
 
