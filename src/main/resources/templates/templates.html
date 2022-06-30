@@ -1,19 +1,88 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>NFZero - we offer you some modern and beautiful design</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../static/style/Layout.css" th:href="@{/style/style.css}" rel="stylesheet" />
+<html lang="en">
+    <!-- config : header -->
+    <th:block th:include="components/config.html :: header(title='NFZero - let&rsquo;s Start the project not from zero' , keywords='NFZ, NFZero, Not From Zero, Template Builder, Web Template Builder')">
+    </th:block>
 
-    </head>
-    <body>
-        
-        
-        
-    </body>
+    <body class="bg-dark-nfz">
+
+
+        <!--Navbar-->
+    <th:block th:include="components/navbar.html :: navbar"></th:block>
+
+    <div class="break-section"></div>
+
+    <section class="bg-dark-nfz">
+        <div class="container text-white">
+            <h2 class="mb-5" style="font-weight: 300;"data-aos="fade-up" data-aos-duration="1500">Choose your favorite template.</h2>
+            <div class="subnav">
+                <ul>
+                    <li class="text-info">All</li>
+                    <li class="">Navbar</li>
+                    <li class="ml-2">Header</li>
+                    <li>Content</li>
+                    <li>Footer</li>
+                    <li class="disabled">Coming soon... </li>
+                </ul>
+            </div>
+            <div class="templates">
+                <div class="row">
+                    <div class="col-4 mt-4">
+                        <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h6 class="card-title">Navbar</h6>
+                                <p class="card-text">Quca Navbar</p>
+                                <a href="#" class="btn btn-primary">Preview</a>
+                                <a href="#" class="btn border-1 border-info text-info">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 mt-4">
+                        <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h6 class="card-title">Navbar</h6>
+                                <p class="card-text">Quca Navbar</p>
+                                <a href="#" class="btn btn-primary">Preview</a>
+                                <a href="#" class="btn border-1 border-info text-info">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 mt-4">
+                        <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h6 class="card-title">Navbar</h6>
+                                <p class="card-text">Quca Navbar</p>
+                                <a href="#" class="btn btn-primary">Preview</a>
+                                <a href="#" class="btn border-1 border-info text-info">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 mt-4">
+                        <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h6 class="card-title">Navbar</h6>
+                                <p class="card-text">Quca Navbar</p>
+                                <a href="#" class="btn btn-primary">Preview</a>
+                                <a href="#" class="btn border-1 border-info text-info">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="break-section"></div>
+
+    <!-- footer -->
+    <th:block th:include="components/footer.html :: footer"></th:block>
+
+    <!-- Config : Script -->
+    <th:block th:include="components/config.html :: script"></th:block>
+</body>
 </html>

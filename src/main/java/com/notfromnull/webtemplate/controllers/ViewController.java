@@ -38,7 +38,7 @@ public class ViewController {
         return "index";
     }
 
-    @GetMapping("/templates")
+    @GetMapping("/services/web-template-builder")
     public String getTemplatesPage(Model model) {
         model.addAttribute("banners", bannerService.getAllBanner());
         model.addAttribute("navbars", navbarService.getAllNavbar());
@@ -70,11 +70,9 @@ public class ViewController {
             @RequestParam @Nullable String navbarId,
             @RequestParam @Nullable String bannerId,
             @RequestParam @Nullable String footerId) {
-
         Banner banner = bannerService.getDetailBanner(bannerId);
         Navbar navbar = navbarService.getDetailNavbar(navbarId);
         Footer footer = footerService.getDetailFooter(footerId);
-
         model.addAttribute("banner", banner);
         model.addAttribute("navbar", navbar);
         model.addAttribute("footer", footer);
