@@ -22,62 +22,72 @@
                     <li class="ml-2">Header</li>
                     <li>Content</li>
                     <li>Footer</li>
-                    <li class="disabled">Coming soon... </li>
+                    <li class="text-muted">Coming soon... </li>
                 </ul>
             </div>
             <div class="templates">
                 <div class="row">
-                    <div class="col-4 mt-4">
+
+
+                    <div class="col-sm-12 col-lg-4 mt-4" th:each="navbar : ${navbars}">
                         <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h6 class="card-title">Navbar</h6>
-                                <p class="card-text">Quca Navbar</p>
+                                <p class="card-text" th:text="${navbar.name}">Navbar name</p>
                                 <button class="btn btn-primary">Preview</button>
-                                <button class="btn border-1 border-info text-info">Select</button>
+                                <button th:class="'btn border-1 border-info text-info ' + ${navbar.templateId}" th:attr="onclick=|selectNavbar('${navbar.templateId}')|">Select</button>
+                                <button class="btn border-1 border-danger text-danger d-none" th:attr="onclick=|deleteNavbar()|" th:id='${navbar.templateId}' >Unselect</button>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 mt-4">
+
+                    <div class="col-sm-12 col-lg-4 mt-4" th:each="banner : ${banners}">
                         <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h6 class="card-title">Navbar</h6>
-                                <p class="card-text">Quca Navbar</p>
+                                <h6 class="card-title">Banner</h6>
+                                <p class="card-text" th:text="${banner.name}">Banner name</p>
                                 <button class="btn btn-primary">Preview</button>
-                                <button class="btn border-1 border-info text-info">Select</button>
+                                <button th:class="'btn border-1 border-info text-info ' + ${banner.templateId}"   th:attr="onclick=|selectBanner( '${banner.templateId}' )|">Select</button>
+                                <button class="btn border-1 border-danger text-danger d-none" th:attr="onclick=|deleteBanner()|" th:id='${banner.templateId}' >Unselect</button>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 mt-4">
+
+                    <div class="col-sm-12 col-lg-4 mt-4" th:each="footer : ${footers}">
                         <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
                             <img src="..." class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h6 class="card-title">Navbar</h6>
-                                <p class="card-text">Quca Navbar</p>
+                                <h6 class="card-title">Banner</h6>
+                                <p class="card-text" th:text="${footer.name}">footer name</p>
                                 <button class="btn btn-primary">Preview</button>
-                                <button class="btn border-1 border-info text-info">Select</button>
+                                <button th:class="'btn border-1 border-info text-info ' + ${footer.templateId}" th:attr="onclick=|selectFooter('${footer.templateId}')|">Select</button>
+                                <button class="btn border-1 border-danger text-danger d-none" th:attr="onclick=|deleteFooter()|" th:id='${footer.templateId}' >Unselect</button>
+
                             </div>
                         </div>
                     </div>
-                    <div class="col-4 mt-4">
-                        <div class="card bg-dark-nfz border-1 border-white " style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h6 class="card-title">Navbar</h6>
-                                <p class="card-text">Quca Navbar</p>
-                                <button class="btn btn-primary">Preview</button>
-                                <button class="btn border-1 border-info text-info">Select</button>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>
     </section>
 
-
-    <div class="break-section"></div>
+    <section class="final-button d-none" id="final-button">
+        <div class='row'>
+            <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12 '><span class="bg-dark-nfz text-white px-1 rounded" id="selected-count">0</span> Template has choosed.</div>
+            <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+                <div class='button-preview-download'>
+                    <button class="btn btn-primary">Preview</button>
+                    <button class="btn border-1 border-info text-info">Download</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- footer -->
     <th:block th:include="components/footer.html :: footer"></th:block>
@@ -85,8 +95,96 @@
     <!-- Config : Script -->
     <th:block th:include="components/config.html :: script"></th:block>
     <script>
-        
-        
+        const finalButton = document.getElementById("final-button");
+        fecthSelectedCount();
+        function selectNavbar(id) {
+            localStorage.setItem("navbar", id);
+
+            document.getElementById(id).classList.remove("d-none");
+            document.querySelector(".".concat(id)).classList.add("d-none");
+
+            finalButton.classList.remove("d-none");
+            fecthSelectedCount();
+
+        }
+        function selectBanner(id) {
+            localStorage.setItem("banner", id);
+
+            document.getElementById(id).classList.remove("d-none");
+            document.querySelector(".".concat(id)).classList.add("d-none");
+
+            finalButton.classList.remove("d-none");
+            fecthSelectedCount();
+
+        }
+        function selectFooter(id) {
+            localStorage.setItem("footer", id);
+
+            document.getElementById(id).classList.remove("d-none");
+            document.querySelector(".".concat(id)).classList.add("d-none");
+
+            finalButton.classList.remove("d-none");
+            fecthSelectedCount();
+
+        }
+
+        function deleteNavbar() {
+            document.getElementById(localStorage.getItem("navbar")).classList.add("d-none");
+            document.querySelector(".".concat(localStorage.getItem("navbar"))).classList.remove("d-none");
+
+            localStorage.removeItem("navbar");
+            fecthSelectedCount();
+
+        }
+
+        function deleteBanner() {
+            document.getElementById(localStorage.getItem("banner")).classList.add("d-none");
+            document.querySelector(".".concat(localStorage.getItem("banner"))).classList.remove("d-none");
+
+            localStorage.removeItem("banner");
+            fecthSelectedCount();
+
+        }
+
+        function deleteFooter() {
+            document.getElementById(localStorage.getItem("footer")).classList.add("d-none");
+            document.querySelector(".".concat(localStorage.getItem("footer"))).classList.remove("d-none");
+            localStorage.removeItem("footer");
+            fecthSelectedCount();
+
+        }
+
+        function fecthSelectedCount() {
+            let data = 0;
+            if (localStorage.getItem("navbar") !== null) {
+                data++;
+            }
+            if (localStorage.getItem("banner") !== null) {
+                data++;
+            }
+            if (localStorage.getItem("footer") !== null) {
+                data++;
+            }
+            document.getElementById("selected-count").textContent = data;
+        }
+
+        let ls = {};
+        window.addEventListener("scroll", function () {
+            ls = {
+                "navbar": localStorage.getItem("navbar"),
+                "banner": localStorage.getItem("banner"),
+                "footer": localStorage.getItem("footer")
+            };
+
+            if (ls.navbar !== null || ls.banner !== null || ls.footer !== null) {
+                finalButton.classList.remove("d-none");
+            } else {
+                finalButton.classList.add("d-none");
+
+            }
+
+
+        })
     </script>
 </body>
 </html>

@@ -119,3 +119,30 @@ footer{
 
 
 
+.final-button {
+    position: fixed;
+    z-index: 999;
+    width: 90%;
+    height: 70px;
+    background-color: #367588;
+    bottom: 50px;
+    left:50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+}
+
+.final-button .row{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    left:20px;
+    width: 100%;
+}
+
+.button-preview-download{
+    display: inline-block !important;
+    position: relative;
+    left: 95%;
+    transform: translatex(-100%);
+}
+
