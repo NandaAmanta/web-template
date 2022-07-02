@@ -19,6 +19,7 @@ footerButton.addEventListener("click", () => querySubnav("footer"));
 
 // function to filter the data templates
 function querySubnav(query) {
+    activeSubNav(query);
     switch (query) {
         case "navbar":
             display(navbarTemplates, true);
@@ -56,136 +57,163 @@ function display(listDom, willDisplay) {
     for (var i = 0; i < listDom.length; i++) {
         listDom[i].classList.add("d-none");
     }
+}
 
+function activeSubNav(subnav) {
+    switch (subnav) {
+        case "all":
+            allButton.classList.add("text-info");
+            navbarButton.classList.remove("text-info");
+            bannerButton.classList.remove("text-info");
+            footerButton.classList.remove("text-info");
+            break;
+        case "navbar":
+            allButton.classList.remove("text-info");
+            navbarButton.classList.add("text-info");
+            bannerButton.classList.remove("text-info");
+            footerButton.classList.remove("text-info");
+            break;
+        case "banner":
+            allButton.classList.remove("text-info");
+            navbarButton.classList.remove("text-info");
+            bannerButton.classList.add("text-info");
+            footerButton.classList.remove("text-info");
+            break;
+        case "footer":
+            allButton.classList.remove("text-info");
+            navbarButton.classList.remove("text-info");
+            bannerButton.classList.remove("text-info");
+            footerButton.classList.add("text-info");
+            break;
+    }
 }
 
 
-
 const finalButton = document.getElementById("final-button");
-        starterFecth();
+starterFecth();
 
-        function selectNavbar(id) {
-            localStorage.setItem("navbar", id);
-            document.getElementById(id).classList.remove("d-none");
-            document.querySelector(".".concat(id)).classList.add("d-none");
-            finalButton.classList.remove("d-none");
-            fecthSelectedCount();
+function selectNavbar(id) {
+    localStorage.setItem("navbar", id);
+    document.getElementById(id).classList.remove("d-none");
+    document.querySelector(".".concat(id)).classList.add("d-none");
+    finalButton.classList.remove("d-none");
+    fecthSelectedCount();
+}
+
+function selectBanner(id) {
+    localStorage.setItem("banner", id);
+    document.getElementById(id).classList.remove("d-none");
+    document.querySelector(".".concat(id)).classList.add("d-none");
+    finalButton.classList.remove("d-none");
+    fecthSelectedCount();
+}
+
+function selectFooter(id) {
+    localStorage.setItem("footer", id);
+    document.getElementById(id).classList.remove("d-none");
+    document.querySelector(".".concat(id)).classList.add("d-none");
+    finalButton.classList.remove("d-none");
+    fecthSelectedCount();
+}
+
+function deleteNavbar() {
+    document.getElementById(localStorage.getItem("navbar")).classList.add("d-none");
+    document.querySelector(".".concat(localStorage.getItem("navbar"))).classList.remove("d-none");
+    localStorage.removeItem("navbar");
+    fecthSelectedCount();
+}
+
+function deleteBanner() {
+    document.getElementById(localStorage.getItem("banner")).classList.add("d-none");
+    document.querySelector(".".concat(localStorage.getItem("banner"))).classList.remove("d-none");
+    localStorage.removeItem("banner");
+    fecthSelectedCount();
+}
+
+function deleteFooter() {
+    document.getElementById(localStorage.getItem("footer")).classList.add("d-none");
+    document.querySelector(".".concat(localStorage.getItem("footer"))).classList.remove("d-none");
+    localStorage.removeItem("footer");
+    fecthSelectedCount();
+}
+
+function starterFecth() {
+    fecthSelectedCount();
+    if (localStorage.getItem("navbar") !== null) {
+        document.querySelector("." + localStorage.getItem("navbar")).classList.add("d-none");
+        document.getElementById(localStorage.getItem("navbar")).classList.remove("d-none");
+    }
+    if (localStorage.getItem("banner") !== null) {
+        document.querySelector("." + localStorage.getItem("banner")).classList.add("d-none");
+        document.getElementById(localStorage.getItem("banner")).classList.remove("d-none");
+    }
+    if (localStorage.getItem("footer") !== null) {
+        document.querySelector("." + localStorage.getItem("footer")).classList.add("d-none");
+        document.getElementById(localStorage.getItem("footer")).classList.remove("d-none");
+    }
+}
+
+function fecthSelectedCount() {
+    let data = 0;
+    if (localStorage.getItem("navbar") !== null) {
+        data++;
+    }
+    if (localStorage.getItem("banner") !== null) {
+        data++;
+    }
+    if (localStorage.getItem("footer") !== null) {
+        data++;
+    }
+
+    if (data === 0) {
+        finalButton.classList.add("d-none");
+    }
+
+    document.getElementById("selected-count").textContent = data;
+}
+
+function download() {
+    let locationString = "/api/template/build?";
+    if (localStorage.getItem("navbar") !== null) {
+        if (locationString.charAt(localStorage.length - 1) !== "?") {
+            locationString = locationString.concat("&");
         }
+        locationString = locationString.concat("navbarId=" + localStorage.getItem("navbar"));
+    }
 
-        function selectBanner(id) {
-            localStorage.setItem("banner", id);
-            document.getElementById(id).classList.remove("d-none");
-            document.querySelector(".".concat(id)).classList.add("d-none");
-            finalButton.classList.remove("d-none");
-            fecthSelectedCount();
+    if (localStorage.getItem("banner") !== null) {
+        if (locationString.charAt(localStorage.length - 1) !== "?") {
+            locationString = locationString.concat("&");
         }
+        locationString = locationString.concat("bannerId=" + localStorage.getItem("banner"));
+    }
 
-        function selectFooter(id) {
-            localStorage.setItem("footer", id);
-            document.getElementById(id).classList.remove("d-none");
-            document.querySelector(".".concat(id)).classList.add("d-none");
-            finalButton.classList.remove("d-none");
-            fecthSelectedCount();
+    if (localStorage.getItem("footer") !== null) {
+        if (locationString.charAt(localStorage.length - 1) !== "?") {
+            locationString.concat("&");
         }
+        locationString = locationString.concat("footerId=" + localStorage.getItem("footer"));
+    }
 
-        function deleteNavbar() {
-            document.getElementById(localStorage.getItem("navbar")).classList.add("d-none");
-            document.querySelector(".".concat(localStorage.getItem("navbar"))).classList.remove("d-none");
-            localStorage.removeItem("navbar");
-            fecthSelectedCount();
-        }
-
-        function deleteBanner() {
-            document.getElementById(localStorage.getItem("banner")).classList.add("d-none");
-            document.querySelector(".".concat(localStorage.getItem("banner"))).classList.remove("d-none");
-            localStorage.removeItem("banner");
-            fecthSelectedCount();
-        }
-
-        function deleteFooter() {
-            document.getElementById(localStorage.getItem("footer")).classList.add("d-none");
-            document.querySelector(".".concat(localStorage.getItem("footer"))).classList.remove("d-none");
-            localStorage.removeItem("footer");
-            fecthSelectedCount();
-        }
-
-        function starterFecth() {
-            fecthSelectedCount();
-            if (localStorage.getItem("navbar") !== null) {
-                document.querySelector("." + localStorage.getItem("navbar")).classList.add("d-none");
-                document.getElementById(localStorage.getItem("navbar")).classList.remove("d-none");
-            }
-            if (localStorage.getItem("banner") !== null) {
-                document.querySelector("." + localStorage.getItem("banner")).classList.add("d-none");
-                document.getElementById(localStorage.getItem("banner")).classList.remove("d-none");
-            }
-            if (localStorage.getItem("footer") !== null) {
-                document.querySelector("." + localStorage.getItem("footer")).classList.add("d-none");
-                document.getElementById(localStorage.getItem("footer")).classList.remove("d-none");
-            }
-        }
-
-        function fecthSelectedCount() {
-            let data = 0;
-            if (localStorage.getItem("navbar") !== null) {
-                data++;
-            }
-            if (localStorage.getItem("banner") !== null) {
-                data++;
-            }
-            if (localStorage.getItem("footer") !== null) {
-                data++;
-            }
-
-            if (data === 0) {
-                finalButton.classList.add("d-none");
-            }
-
-            document.getElementById("selected-count").textContent = data;
-        }
-
-        function download() {
-            let locationString = "/api/template/build?";
-            if (localStorage.getItem("navbar") !== null) {
-                if (locationString.charAt(localStorage.length - 1) !== "?") {
-                    locationString = locationString.concat("&");
-                }
-                locationString = locationString.concat("navbarId=" + localStorage.getItem("navbar"));
-            }
-
-            if (localStorage.getItem("banner") !== null) {
-                if (locationString.charAt(localStorage.length - 1) !== "?") {
-                    locationString = locationString.concat("&");
-                }
-                locationString = locationString.concat("bannerId=" + localStorage.getItem("banner"));
-            }
-
-            if (localStorage.getItem("footer") !== null) {
-                if (locationString.charAt(localStorage.length - 1) !== "?") {
-                    locationString.concat("&");
-                }
-                locationString = locationString.concat("footerId=" + localStorage.getItem("footer"));
-            }
-
-            location.href = locationString;
+    location.href = locationString;
 
 
-        }
+}
 
-        let ls = {};
-        window.addEventListener("scroll", function () {
-            ls = {
-                "navbar": localStorage.getItem("navbar"),
-                "banner": localStorage.getItem("banner"),
-                "footer": localStorage.getItem("footer")
-            };
+let ls = {};
+window.addEventListener("scroll", function () {
+    ls = {
+        "navbar": localStorage.getItem("navbar"),
+        "banner": localStorage.getItem("banner"),
+        "footer": localStorage.getItem("footer")
+    };
 
-            if (ls.navbar !== null || ls.banner !== null || ls.footer !== null) {
-                finalButton.classList.remove("d-none");
-            } else {
-                finalButton.classList.add("d-none");
+    if (ls.navbar !== null || ls.banner !== null || ls.footer !== null) {
+        finalButton.classList.remove("d-none");
+    } else {
+        finalButton.classList.add("d-none");
 
-            }
+    }
 
 
-        })
+})
