@@ -59,6 +59,7 @@ function display(listDom, willDisplay) {
     }
 }
 
+// function subnav button active
 function activeSubNav(subnav) {
     switch (subnav) {
         case "all":
