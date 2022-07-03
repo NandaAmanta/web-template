@@ -89,6 +89,34 @@ function activeSubNav(subnav) {
     }
 }
 
+//Preview
+function preview() {
+    let locationString = "/preview?";
+    if (localStorage.getItem("navbar") !== null) {
+        if (locationString.charAt(locationString.length - 1) !== "?") {
+            console.log(locationString.charAt(locationString.length - 1))
+            locationString = locationString.concat("&");
+        }
+        locationString = locationString.concat("navbarId=" + localStorage.getItem("navbar"));
+    }
+
+    if (localStorage.getItem("banner") !== null) {
+        if (locationString.charAt(locationString.length - 1) !== "?") {
+            locationString = locationString.concat("&");
+        }
+        locationString = locationString.concat("bannerId=" + localStorage.getItem("banner"));
+    }
+
+    if (localStorage.getItem("footer") !== null) {
+        if (locationString.charAt(locationString.length - 1) !== "?") {
+            locationString.concat("&");
+        }
+        locationString = locationString.concat("footerId=" + localStorage.getItem("footer"));
+    }
+
+    location.href = locationString;
+}
+
 
 const finalButton = document.getElementById("final-button");
 starterFecth();
@@ -176,21 +204,21 @@ function fecthSelectedCount() {
 function download() {
     let locationString = "/api/template/build?";
     if (localStorage.getItem("navbar") !== null) {
-        if (locationString.charAt(localStorage.length - 1) !== "?") {
+        if (locationString.charAt(locationString.length - 1) !== "?") {
             locationString = locationString.concat("&");
         }
         locationString = locationString.concat("navbarId=" + localStorage.getItem("navbar"));
     }
 
     if (localStorage.getItem("banner") !== null) {
-        if (locationString.charAt(localStorage.length - 1) !== "?") {
+        if (locationString.charAt(locationString.length - 1) !== "?") {
             locationString = locationString.concat("&");
         }
         locationString = locationString.concat("bannerId=" + localStorage.getItem("banner"));
     }
 
     if (localStorage.getItem("footer") !== null) {
-        if (locationString.charAt(localStorage.length - 1) !== "?") {
+        if (locationString.charAt(locationString.length - 1) !== "?") {
             locationString.concat("&");
         }
         locationString = locationString.concat("footerId=" + localStorage.getItem("footer"));

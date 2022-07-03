@@ -25,6 +25,6 @@ public class BannerService {
     }
 
     public Banner getDetailBanner(String id) {
-        return bannerRepository.findById(id).orElse(null);
+        return bannerRepository.findByTemplateId(id).orElse(null);
     }
 }

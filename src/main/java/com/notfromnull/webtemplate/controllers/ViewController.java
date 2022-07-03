@@ -73,9 +73,22 @@ public class ViewController {
             @RequestParam @Nullable String navbarId,
             @RequestParam @Nullable String bannerId,
             @RequestParam @Nullable String footerId) {
-        Banner banner = bannerService.getDetailBanner(bannerId);
-        Navbar navbar = navbarService.getDetailNavbar(navbarId);
-        Footer footer = footerService.getDetailFooter(footerId);
+        Navbar navbar = new Navbar();
+        Banner banner = new Banner();
+        Footer footer = new Footer();
+
+        if (navbarId != null) {
+            navbar = navbarService.getDetailNavbar(navbarId);
+        }
+
+        if (bannerId != null) {
+            banner = bannerService.getDetailBanner(bannerId);
+        }
+
+        if (footerId != null) {
+            footer = footerService.getDetailFooter(footerId);
+        }
+        
         model.addAttribute("banner", banner);
         model.addAttribute("navbar", navbar);
         model.addAttribute("footer", footer);

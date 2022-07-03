@@ -78,13 +78,29 @@
             <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12 '><span class="bg-dark-nfz text-white px-1 rounded" id="selected-count">0</span> Template has choosed.</div>
             <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
                 <div class='button-preview-download'>
-                    <button class="btn btn-primary">Preview</button>
+                    <button class="btn btn-primary" onclick="preview()">Preview</button>
                     <button class="btn border-1 border-info text-info" onclick="download()">Download</button>
                 </div>
             </div>
         </div>
     </section>
+<div class="break-section"></div>
+    <section class="bg-dark-nfz">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <img th:src="@{/image/quote-08c1b712d6a6f2a891a0c524f236ca60.svg}" width="60px">
 
+                </div>
+                <div class="col-12 d-flex justify-content-center mt-4">
+                    <h4 style="max-width: 700px; color:#3e889f;">You may never know what results come of your actions, but if you do nothing, there will be no results.</h4>
+                </div>
+                <div class="col-12">
+                    <h5 class="text-muted">-Mahatma Gandhi</h5>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- footer -->
     <th:block th:include="components/footer.html :: footer"></th:block>
 

@@ -25,6 +25,6 @@ public class FooterService {
     }
 
     public Footer getDetailFooter(String id) {
-        return footerRepository.findById(id).orElse(null);
+        return footerRepository.findByTemplateId(id).orElse(null);
     }
 }

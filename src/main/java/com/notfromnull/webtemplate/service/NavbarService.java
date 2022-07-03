@@ -25,6 +25,6 @@ public class NavbarService {
     }
 
     public Navbar getDetailNavbar(String id) {
-        return navbarRepository.findById(id).orElse(null);
+        return navbarRepository.findByTemplateId(id).orElse(null);
     }
 }
