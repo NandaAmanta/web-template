@@ -34,7 +34,8 @@
                             <div class="card-body">
                                 <h6 class="card-title">Navbar</h6>
                                 <p class="card-text" th:text="${navbar.name}">Navbar name</p>
-                                <button class="btn btn-primary">Preview</button>
+                                <button class="btn btn-primary">Creator</button>
+
                                 <button th:class="'btn border-1 border-info text-info ' + ${navbar.templateId}" th:attr="onclick=|selectNavbar('${navbar.templateId}')|">Select</button>
                                 <button class="btn border-1 border-danger text-danger d-none" th:attr="onclick=|deleteNavbar()|" th:id='${navbar.templateId}' >Unselect</button>
                             </div>
@@ -47,7 +48,8 @@
                             <div class="card-body">
                                 <h6 class="card-title">Banner</h6>
                                 <p class="card-text" th:text="${banner.name}">Banner name</p>
-                                <button class="btn btn-primary">Preview</button>
+                                <button class="btn btn-primary">Creator</button>
+
                                 <button th:class="'btn border-1 border-info text-info ' + ${banner.templateId}"   th:attr="onclick=|selectBanner( '${banner.templateId}' )|">Select</button>
                                 <button class="btn border-1 border-danger text-danger d-none" th:attr="onclick=|deleteBanner()|" th:id='${banner.templateId}' >Unselect</button>
                             </div>
@@ -60,7 +62,7 @@
                             <div class="card-body">
                                 <h6 class="card-title">Footer</h6>
                                 <p class="card-text" th:text="${footer.name}">footer name</p>
-                                <button class="btn btn-primary">Preview</button>
+                                <button class="btn btn-primary">Creator</button>
                                 <button th:class="'btn border-1 border-info text-info ' + ${footer.templateId}" th:attr="onclick=|selectFooter('${footer.templateId}')|">Select</button>
                                 <button class="btn border-1 border-danger text-danger d-none" th:attr="onclick=|deleteFooter()|" th:id='${footer.templateId}' >Unselect</button>
                             </div>
@@ -84,7 +86,7 @@
             </div>
         </div>
     </section>
-<div class="break-section"></div>
+    <div class="break-section"></div>
     <section class="bg-dark-nfz">
         <div class="container">
             <div class="row text-center">
