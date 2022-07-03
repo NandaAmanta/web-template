@@ -114,7 +114,7 @@ function preview() {
         locationString = locationString.concat("footerId=" + localStorage.getItem("footer"));
     }
 
-    location.href = locationString;
+    window.open(locationString, '_blank')
 }
 
 
