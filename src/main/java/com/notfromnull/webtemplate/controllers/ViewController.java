@@ -66,6 +66,11 @@ public class ViewController {
         model.addAttribute("banners", bannerService.getAllBanner());
         return "list-banner";
     }
+    
+    @GetMapping("/donation")
+    public String getDonationPage(Model model) {
+        return "donation";
+    }
 
     @GetMapping("/preview")
     public String getPreviewPage(
