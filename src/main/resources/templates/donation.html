@@ -5,14 +5,44 @@
     </th:block>
 
     <body class="bg-dark-nfz">
-        
-        
-    <!--Navbar-->
+
+
+        <!--Navbar-->
     <th:block th:include="components/navbar.html :: navbar"></th:block>
-    
-    
-    
-    
+    <div class="break-section"></div>
+    <section class="text-white">
+        <div class="container">
+            <h1> You can support this project by donating.</h1>
+            <h5 class="text-info">Choose your donation type :</h5>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <a href="https://saweria.co/nandaamanta" target="blank" class="btn btn-outline-warning ">Saweria</a>
+                    <a href="https://www.buymeacoffee.com/nandaamanta#" target="blank" class="btn btn-outline-success ">Buy me coffe</a>
+                    <a href="#" class="btn btn-outline-primary">Donate Template</a>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </section>
+
+<div class="break-section"></div>
+    <section class="bg-dark-nfz">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <img th:src="@{/image/quote-08c1b712d6a6f2a891a0c524f236ca60.svg}" width="60px">
+
+                </div>
+                <div class="col-12 d-flex justify-content-center mt-4">
+                    <h4 style="max-width: 700px; color:#3e889f;">You may never know what results come of your actions, but if you do nothing, there will be no results.</h4>
+                </div>
+                <div class="col-12">
+                    <h5 class="text-muted">-Mahatma Gandhi</h5>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- footer -->
     <th:block th:include="components/footer.html :: footer"></th:block>
 
