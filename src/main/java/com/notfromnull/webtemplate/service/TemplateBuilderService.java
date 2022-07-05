@@ -10,6 +10,7 @@ import com.notfromnull.webtemplate.entity.Navbar;
 import com.notfromnull.webtemplate.repository.BannerRepository;
 import com.notfromnull.webtemplate.repository.FooterRepository;
 import com.notfromnull.webtemplate.repository.NavbarRepository;
+import com.notfromnull.webtemplate.util.Generator;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,9 +42,13 @@ public class TemplateBuilderService {
     @Autowired
     private NavbarRepository navbarRepository;
 
+    @Autowired
+    private Generator generator;
+
     private List<String> fileList = new ArrayList<String>();
     private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
 
+    // main method
     public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response, String navbarId, String bannerId, String footerId) {
         generateFileList(new File(SOURCE_FOLDER));
         generateProject(navbarId, bannerId, footerId);
@@ -92,7 +97,7 @@ public class TemplateBuilderService {
     public void generateFileList(File node) {
         // add file only
         if (node.isFile()) {
-            fileList.add(generateZipEntry(node.toString()));
+            fileList.add(generator.generateZipEntry(node.toString(), SOURCE_FOLDER));
         }
 
         if (node.isDirectory()) {
@@ -101,10 +106,6 @@ public class TemplateBuilderService {
                 generateFileList(new File(node, filename));
             }
         }
-    }
-
-    private String generateZipEntry(String file) {
-        return file.substring(SOURCE_FOLDER.length() + 1, file.length());
     }
 
     private void generateProject(String navbarId, String bannerId, String footerId) {
