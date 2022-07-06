@@ -4,7 +4,7 @@
  */
 package com.notfromnull.webtemplate.service;
 
-import com.notfromnull.webtemplate.repository.BannerRepository;
+import com.notfromnull.webtemplate.repository.FooterRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,20 +19,20 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class BannerServiceTests {
+public class FooterServiceTests {
 
     @Mock
-    private BannerRepository bannerRepository;
-    private BannerService bannerServiceUnderTest;
+    private FooterRepository footerRepository;
+    private FooterService footerServiceUnderTest;
 
     @BeforeEach
     public void setUp() {
-        bannerServiceUnderTest = new BannerService(bannerRepository);
+        footerServiceUnderTest = new FooterService(footerRepository);
     }
 
     @Test
     public void getAllBanner() {
-        bannerServiceUnderTest.getAllBanner();
-        Mockito.verify(bannerRepository).findAll();
-    }
+        footerServiceUnderTest.getAllFooter();
+        Mockito.verify(footerRepository).findAll();
+    }  
 }

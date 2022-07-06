@@ -4,8 +4,7 @@
  */
 package com.notfromnull.webtemplate.util;
 
-import java.io.File;
-import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 /**

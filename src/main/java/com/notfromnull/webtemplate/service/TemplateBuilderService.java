@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
@@ -47,6 +48,12 @@ public class TemplateBuilderService {
 
     private List<String> fileList = new ArrayList<String>();
     private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
+
+    public TemplateBuilderService(BannerRepository bannerRepository, FooterRepository footerRepository, NavbarRepository navbarRepository) {
+        this.bannerRepository = bannerRepository;
+        this.footerRepository = footerRepository;
+        this.navbarRepository = navbarRepository;
+    }
 
     // main method
     public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response, String navbarId, String bannerId, String footerId) {

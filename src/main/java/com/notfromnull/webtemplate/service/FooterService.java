@@ -7,6 +7,7 @@ package com.notfromnull.webtemplate.service;
 import com.notfromnull.webtemplate.entity.Footer;
 import com.notfromnull.webtemplate.repository.FooterRepository;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
  * @author ASUS
  */
 @Service
+@AllArgsConstructor
 public class FooterService {
 
     @Autowired
