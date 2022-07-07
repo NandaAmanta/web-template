@@ -78,9 +78,9 @@ public class ViewController {
             @RequestParam @Nullable String navbarId,
             @RequestParam @Nullable String bannerId,
             @RequestParam @Nullable String footerId) {
-        Navbar navbar = new Navbar();
-        Banner banner = new Banner();
-        Footer footer = new Footer();
+        WebTemplate navbar = new Navbar();
+        WebTemplate banner = new Banner();
+        WebTemplate footer = new Footer();
 
         if (navbarId != null) {
             navbar = navbarService.getDetailNavbar(navbarId);

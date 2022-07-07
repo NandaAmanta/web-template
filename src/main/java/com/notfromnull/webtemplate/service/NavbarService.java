@@ -5,6 +5,7 @@
 package com.notfromnull.webtemplate.service;
 
 import com.notfromnull.webtemplate.entity.Navbar;
+import com.notfromnull.webtemplate.entity.WebTemplate;
 import com.notfromnull.webtemplate.repository.NavbarRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class NavbarService {
         return navbarRepository.findAll();
     }
 
-    public Navbar getDetailNavbar(String id) {
+    public WebTemplate getDetailNavbar(String id) {
         return navbarRepository.findByTemplateId(id).orElse(null);
     }
 }

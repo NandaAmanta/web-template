@@ -18,7 +18,6 @@ public abstract class WebTemplate {
     
     @Id
     private String templateId;
-    
     private String name;
     private String description;
     private String html;

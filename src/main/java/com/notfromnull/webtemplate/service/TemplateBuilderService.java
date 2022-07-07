@@ -7,6 +7,7 @@ package com.notfromnull.webtemplate.service;
 import com.notfromnull.webtemplate.entity.Banner;
 import com.notfromnull.webtemplate.entity.Footer;
 import com.notfromnull.webtemplate.entity.Navbar;
+import com.notfromnull.webtemplate.entity.WebTemplate;
 import com.notfromnull.webtemplate.repository.BannerRepository;
 import com.notfromnull.webtemplate.repository.FooterRepository;
 import com.notfromnull.webtemplate.repository.NavbarRepository;
@@ -116,9 +117,9 @@ public class TemplateBuilderService {
     }
 
     private void generateProject(String navbarId, String bannerId, String footerId) {
-        Banner banner = null;
-        Navbar navbar = null;
-        Footer footer = null;
+        WebTemplate banner = null;
+        WebTemplate navbar = null;
+        WebTemplate footer = null;
         try {
 // ----------- Html
             File fileHtml = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "index.html");

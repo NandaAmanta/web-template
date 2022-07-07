@@ -5,6 +5,7 @@
 package com.notfromnull.webtemplate.service;
 
 import com.notfromnull.webtemplate.entity.Footer;
+import com.notfromnull.webtemplate.entity.WebTemplate;
 import com.notfromnull.webtemplate.repository.FooterRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class FooterService {
         return footerRepository.findAll();
     }
 
-    public Footer getDetailFooter(String id) {
+    public WebTemplate getDetailFooter(String id) {
         return footerRepository.findByTemplateId(id).orElse(null);
     }
 }

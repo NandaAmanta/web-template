@@ -10,6 +10,7 @@ import com.notfromnull.webtemplate.repository.NavbarRepository;
 import javax.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -44,6 +45,7 @@ public class TemplateBuilderServiceTests {
         templateBuilderServiceUnderTest = new TemplateBuilderService(bannerRepository, footerRepository, navbarRepository);
     }
 
+    @Disabled
     @Test
     public void buildProjectTemplateZip_SuccessBuildTemplateWithoutTemplate_StreamingResponseBody() {
         templateBuilderServiceUnderTest.buildProjectTemplateZip(httpServletResponse, "p", "asd", "as");
