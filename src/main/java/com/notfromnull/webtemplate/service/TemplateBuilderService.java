@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +49,7 @@ public class TemplateBuilderService {
     private Generator generator;
 
     private List<String> fileList = new ArrayList<String>();
-    private static final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
+    private final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
 
     public TemplateBuilderService(BannerRepository bannerRepository, FooterRepository footerRepository, NavbarRepository navbarRepository) {
         this.bannerRepository = bannerRepository;
@@ -143,22 +144,27 @@ public class TemplateBuilderService {
             bwHtml.newLine();
 
             if (navbarId != null) {
-                navbar = navbarRepository.findByTemplateId(navbarId).orElseThrow();
-                bwHtml.write(navbar.getHtml());
-                bwHtml.newLine();
+                navbar = navbarRepository.findByTemplateId(navbarId).orElse(null);
+                if (navbar != null && navbar.getHtml() != null) {
+                    bwHtml.write(navbar.getHtml());
+                    bwHtml.newLine();
+                }
             }
 
             if (bannerId != null) {
-                banner = bannerRepository.findByTemplateId(bannerId).orElseThrow();
-                System.out.println(banner.getTemplateId());
-                bwHtml.write(banner.getHtml());
-                bwHtml.newLine();
+                banner = bannerRepository.findByTemplateId(bannerId).orElse(null);
+                if (banner != null && banner.getHtml() != null) {
+                    bwHtml.write(banner.getHtml());
+                    bwHtml.newLine();
+                }
             }
 
             if (footerId != null) {
-                footer = footerRepository.findByTemplateId(footerId).orElseThrow();
-                bwHtml.write(footer.getHtml());
-                bwHtml.newLine();
+                footer = footerRepository.findByTemplateId(footerId).orElse(null);
+                if (footer != null && footer.getHtml() != null) {
+                    bwHtml.write(footer.getHtml());
+                    bwHtml.newLine();
+                }
             }
 
             bwHtml.write("<script src=\"./script/not-from-zero.js\" ></script>\n"

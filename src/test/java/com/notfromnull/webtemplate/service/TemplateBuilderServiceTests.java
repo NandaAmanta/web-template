@@ -48,7 +48,7 @@ public class TemplateBuilderServiceTests {
     @Disabled
     @Test
     public void buildProjectTemplateZip_SuccessBuildTemplateWithoutTemplate_StreamingResponseBody() {
-        templateBuilderServiceUnderTest.buildProjectTemplateZip(httpServletResponse, "p", "asd", "as");
+        templateBuilderServiceUnderTest.buildProjectTemplateZip(httpServletResponse, null, null, null);
     }
 
 }
