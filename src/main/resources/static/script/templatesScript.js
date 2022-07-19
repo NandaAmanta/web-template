@@ -149,8 +149,7 @@ function selectFooter(id) {
 
 function deleteNavbar() {
     document.getElementById(localStorage.getItem("navbar")).classList.add("d-none");
-    document.querySelector(".template-".concat(localStorage.getItem("navbar"))).classList.remove("d-none");
-    
+    document.querySelector(".template-".concat(localStorage.getItem("navbar"))).classList.remove("d-none");    
     localStorage.removeItem("navbar");
     fecthSelectedCount();
 }
