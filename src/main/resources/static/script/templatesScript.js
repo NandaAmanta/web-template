@@ -122,9 +122,10 @@ const finalButton = document.getElementById("final-button");
 starterFecth();
 
 function selectNavbar(id) {
+    
     localStorage.setItem("navbar", id);
     document.getElementById(id).classList.remove("d-none");
-    document.querySelector(".".concat(id)).classList.add("d-none");
+    document.querySelector(".template-".concat(id)).classList.add("d-none");
     finalButton.classList.remove("d-none");
     fecthSelectedCount();
 }
@@ -132,7 +133,7 @@ function selectNavbar(id) {
 function selectBanner(id) {
     localStorage.setItem("banner", id);
     document.getElementById(id).classList.remove("d-none");
-    document.querySelector(".".concat(id)).classList.add("d-none");
+    document.querySelector(".template-".concat(id)).classList.add("d-none");
     finalButton.classList.remove("d-none");
     fecthSelectedCount();
 }
@@ -140,28 +141,30 @@ function selectBanner(id) {
 function selectFooter(id) {
     localStorage.setItem("footer", id);
     document.getElementById(id).classList.remove("d-none");
-    document.querySelector(".".concat(id)).classList.add("d-none");
+    
     finalButton.classList.remove("d-none");
     fecthSelectedCount();
+    document.querySelector(".template-".concat(id)).classList.add("d-none");
 }
 
 function deleteNavbar() {
     document.getElementById(localStorage.getItem("navbar")).classList.add("d-none");
-    document.querySelector(".".concat(localStorage.getItem("navbar"))).classList.remove("d-none");
+    document.querySelector(".template-".concat(localStorage.getItem("navbar"))).classList.remove("d-none");
+    
     localStorage.removeItem("navbar");
     fecthSelectedCount();
 }
 
 function deleteBanner() {
     document.getElementById(localStorage.getItem("banner")).classList.add("d-none");
-    document.querySelector(".".concat(localStorage.getItem("banner"))).classList.remove("d-none");
+    document.querySelector(".template-".concat(localStorage.getItem("banner"))).classList.remove("d-none");
     localStorage.removeItem("banner");
     fecthSelectedCount();
 }
 
 function deleteFooter() {
     document.getElementById(localStorage.getItem("footer")).classList.add("d-none");
-    document.querySelector(".".concat(localStorage.getItem("footer"))).classList.remove("d-none");
+    document.querySelector(".template-".concat(localStorage.getItem("footer"))).classList.remove("d-none");
     localStorage.removeItem("footer");
     fecthSelectedCount();
 }
@@ -169,15 +172,15 @@ function deleteFooter() {
 function starterFecth() {
     fecthSelectedCount();
     if (localStorage.getItem("navbar") !== null) {
-        document.querySelector("." + localStorage.getItem("navbar")).classList.add("d-none");
+        document.querySelector(".template-".concat(localStorage.getItem("navbar"))).classList.add("d-none");
         document.getElementById(localStorage.getItem("navbar")).classList.remove("d-none");
     }
     if (localStorage.getItem("banner") !== null) {
-        document.querySelector("." + localStorage.getItem("banner")).classList.add("d-none");
+        document.querySelector(".template-" + localStorage.getItem("banner")).classList.add("d-none");
         document.getElementById(localStorage.getItem("banner")).classList.remove("d-none");
     }
     if (localStorage.getItem("footer") !== null) {
-        document.querySelector("." + localStorage.getItem("footer")).classList.add("d-none");
+        document.querySelector(".template-" + localStorage.getItem("footer")).classList.add("d-none");
         document.getElementById(localStorage.getItem("footer")).classList.remove("d-none");
     }
 }

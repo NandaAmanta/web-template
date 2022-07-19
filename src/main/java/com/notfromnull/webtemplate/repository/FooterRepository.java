@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface FooterRepository extends MongoRepository<Footer, String> {
-    Optional<WebTemplate> findByTemplateId(String templateId);
+    Optional<Footer> findByTemplateId(String templateId);
 }

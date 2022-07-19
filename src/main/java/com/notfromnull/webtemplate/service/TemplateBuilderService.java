@@ -49,7 +49,7 @@ public class TemplateBuilderService {
     private Generator generator;
 
     private List<String> fileList = new ArrayList<String>();
-    private final String SOURCE_FOLDER = "D:\\git-project\\webtemplate\\tess\\Project";
+    private final String SOURCE_FOLDER = System.getenv("WEB_TEMPLATE_SOURCE") != null ? System.getenv("WEB_TEMPLATE_SOURCE") : "D:\\git-project\\webtemplate\\tess\\Project";
 
     public TemplateBuilderService(BannerRepository bannerRepository, FooterRepository footerRepository, NavbarRepository navbarRepository) {
         this.bannerRepository = bannerRepository;
@@ -64,8 +64,8 @@ public class TemplateBuilderService {
         return zipIt(response);
     }
 
-    public StreamingResponseBody zipIt(HttpServletResponse response) {
-        int BUFFER_SIZE = 1024;
+    private StreamingResponseBody zipIt(HttpServletResponse response) {
+        final int BUFFER_SIZE = 1024;
 
         StreamingResponseBody streamResponseBody = out -> {
             List<String> fileListAlt = new ArrayList<>(fileList);
@@ -103,7 +103,7 @@ public class TemplateBuilderService {
         return streamResponseBody;
     }
 
-    public void generateFileList(File node) {
+    private void generateFileList(File node) {
         // add file only
         if (node.isFile()) {
             fileList.add(generator.generateZipEntry(node.toString(), SOURCE_FOLDER));
@@ -118,9 +118,9 @@ public class TemplateBuilderService {
     }
 
     private void generateProject(String navbarId, String bannerId, String footerId) {
-        WebTemplate banner = null;
-        WebTemplate navbar = null;
-        WebTemplate footer = null;
+        Banner banner = null;
+        Navbar navbar = null;
+        Footer footer = null;
         try {
 // ----------- Html
             File fileHtml = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "index.html");

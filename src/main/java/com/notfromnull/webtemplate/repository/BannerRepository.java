@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface BannerRepository extends MongoRepository<Banner, String> {
-    Optional<WebTemplate> findByTemplateId(String templateId);
+    Optional<Banner> findByTemplateId(String templateId);
 }

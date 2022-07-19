@@ -24,7 +24,7 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 public class TemplateBuilderController {
 
     @Autowired
-    TemplateBuilderService tbs;
+    TemplateBuilderService templateBuilderService;
 
     @GetMapping(produces = "application/zip")
     public ResponseEntity<StreamingResponseBody> buildTemplate(
@@ -35,7 +35,7 @@ public class TemplateBuilderController {
         response.setHeader("Content-Disposition", "attachment; filename=NFZero_starter-project.zip");
         response.addHeader("Pragma", "no-cache");
         response.addHeader("Expires", "0");
-        var streamResult = tbs.buildProjectTemplateZip(response, navbarId, bannerId, footerId);
+        var streamResult = templateBuilderService.buildProjectTemplateZip(response, navbarId, bannerId, footerId);
         return ResponseEntity.ok(streamResult);
     }
 
