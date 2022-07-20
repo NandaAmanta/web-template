@@ -15,7 +15,7 @@ import org.springframework.data.annotation.Id;
  */
 @Data
 public abstract class WebTemplate {
-    
+
     @Id
     private String templateId;
     private String name;
@@ -26,4 +26,6 @@ public abstract class WebTemplate {
     private String js;
     private String previewImage;
     private Date createdAt;
+    private int buildCount;
+    
 }

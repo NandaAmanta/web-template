@@ -57,10 +57,23 @@ public class TemplateBuilderService {
         this.navbarRepository = navbarRepository;
     }
 
-    // main method
-    public StreamingResponseBody buildProjectTemplateZip(HttpServletResponse response, String navbarId, String bannerId, String footerId) {
+    /**
+     * This method is for build the Streaming Response Body Template zip
+     *
+     * @param response HttpServletResponse
+     * @param navbarId the chosen navbarId
+     * @param bannerId the chosen bannerId
+     * @param footerId the chosen footerId
+     * @return the StreamingResponseBody
+     */
+    public StreamingResponseBody buildProjectTemplateZip(
+            HttpServletResponse response,
+            String navbarId, String bannerId,
+            String footerId) {
         generateFileList(new File(SOURCE_FOLDER));
-        generateProject(navbarId, bannerId, footerId);
+        var webTemplates = generateProject(navbarId, bannerId, footerId);
+        var buildCounterService = new BuildCounterService(bannerRepository, navbarRepository, footerRepository, webTemplates);
+        buildCounterService.start();
         return zipIt(response);
     }
 
@@ -117,10 +130,12 @@ public class TemplateBuilderService {
         }
     }
 
-    private void generateProject(String navbarId, String bannerId, String footerId) {
+    private List<WebTemplate> generateProject(String navbarId, String bannerId, String footerId) {
         Banner banner = null;
         Navbar navbar = null;
         Footer footer = null;
+        List<WebTemplate> listWebTemplate = new ArrayList<>();
+
         try {
 // ----------- Html
             File fileHtml = new File("D:\\git-project\\webtemplate\\tess" + File.separator + "Project" + File.separator + "index.html");
@@ -148,6 +163,7 @@ public class TemplateBuilderService {
                 if (navbar != null && navbar.getHtml() != null) {
                     bwHtml.write(navbar.getHtml());
                     bwHtml.newLine();
+                    listWebTemplate.add(navbar);
                 }
             }
 
@@ -156,6 +172,7 @@ public class TemplateBuilderService {
                 if (banner != null && banner.getHtml() != null) {
                     bwHtml.write(banner.getHtml());
                     bwHtml.newLine();
+                    listWebTemplate.add(banner);
                 }
             }
 
@@ -164,6 +181,7 @@ public class TemplateBuilderService {
                 if (footer != null && footer.getHtml() != null) {
                     bwHtml.write(footer.getHtml());
                     bwHtml.newLine();
+                    listWebTemplate.add(footer);
                 }
             }
 
@@ -220,5 +238,7 @@ public class TemplateBuilderService {
             System.out.print("---------------------------------------------> ");
             System.out.print(err.getMessage());
         }
+
+        return listWebTemplate;
     }
 }

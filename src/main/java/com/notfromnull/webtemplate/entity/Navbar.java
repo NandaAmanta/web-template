@@ -13,4 +13,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Navbar")
 public class Navbar extends WebTemplate {
 
+
 }
