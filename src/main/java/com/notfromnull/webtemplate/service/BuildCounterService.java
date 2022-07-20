@@ -46,7 +46,6 @@ public class BuildCounterService extends Thread {
     @Override
     public void run() {
         for (WebTemplate webTemplate : listWebTemplate) {
-            System.out.println("Hai");
             if (webTemplate instanceof Banner) {
                 webTemplate.setBuildCount(webTemplate.getBuildCount() + 1);
                 bannerRepository.save((Banner) webTemplate);
